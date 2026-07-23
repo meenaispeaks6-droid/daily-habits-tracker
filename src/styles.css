@@ -49,6 +49,8 @@
   --color-mint-foreground: var(--mint-foreground);
   --color-surface-alt: var(--surface-alt);
   --color-success: var(--success);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 }
@@ -78,6 +80,8 @@
   --mint-foreground: oklch(0.28 0.06 55);
   --surface-alt: oklch(0.95 0.01 70);
   --success: oklch(0.78 0.14 75);
+  --brand: oklch(0.78 0.14 70);
+  --brand-foreground: oklch(0.18 0.02 60);
   --chart-1: oklch(0.42 0.04 55);
   --chart-2: oklch(0.55 0.10 60);
   --chart-3: oklch(0.78 0.14 75);
@@ -117,6 +121,8 @@
   --mint-foreground: oklch(0.85 0.06 70);
   --surface-alt: oklch(0.22 0.01 60);
   --success: oklch(0.78 0.14 75);
+  --brand: oklch(0.78 0.14 70);
+  --brand-foreground: oklch(0.12 0.02 60);
   --chart-1: oklch(0.78 0.14 75);
   --chart-2: oklch(0.55 0.10 60);
   --chart-3: oklch(0.78 0.14 75);

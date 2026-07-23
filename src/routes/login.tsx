@@ -72,7 +72,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-5 relative bg-white">
+    <div className="min-h-screen flex items-center justify-center px-5 relative bg-background">
       {/* Shadow background */}
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `url(${shadowBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', opacity: 0.75 }} />
 
@@ -84,7 +84,7 @@ function LoginPage() {
         </Link>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-xl shadow-black/[0.06] border border-border/50 p-8">
+        <div className="bg-card rounded-2xl shadow-xl shadow-black/[0.06] border border-border/50 p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-semibold text-foreground tracking-tight" style={{ lineHeight: "1.2" }}>
               {isSignUp ? "Create your account" : "Welcome back"}
@@ -152,7 +152,7 @@ function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#FDAA3E] text-[#1a1a1a] py-3.5 text-sm font-bold hover:bg-[#fdb95e] transition-all duration-200 active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none shadow-lg shadow-[#FDAA3E]/20"
+            className="w-full rounded-xl bg-brand text-brand-foreground py-3.5 text-sm font-bold hover:bg-brand/90 transition-all duration-200 active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none shadow-lg shadow-brand/20"
           >
             {loading ? "Please wait..." : isSignUp ? "Sign up" : "Sign in"}
           </button>
