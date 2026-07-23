@@ -1,34 +1,23 @@
+## Current state
 
+- The Google OAuth navigation bug described in the previous plan is already fixed in `src/routes/login.tsx`: when `result.redirected` is false and there is no error, the code calls `navigate({ to: "/app" })`.
+- The login page previously used hardcoded hex colors (`#FDAA3E`, `#1a1a1a`, `bg-white`) which bypassed the theme system and would break if the project switches to dark mode or changes its palette.
 
-## Problem
+## Latest change
 
-After Google OAuth completes, the `handleGoogleSignIn` function in `login.tsx` doesn't navigate to `/app`. Here's the flow:
+**File: `src/styles.css`** — Added semantic `brand` color tokens:
 
-1. User clicks "Continue with Google"
-2. Browser redirects to Google, user authenticates
-3. Browser redirects back to the `redirect_uri` (`/app`)
-4. **But**: if the OAuth flow uses a popup or token exchange instead of a full redirect, the `lovable.auth.signInWithOAuth` call returns with `result.redirected = false` and no error — the session is set, but no navigation happens
+- `--color-brand` / `--color-brand-foreground` registered in `@theme inline`
+- Light and dark mode values set in `:root` and `.dark`
 
-The code only handles `result.error` — it never handles the success case where `result.redirected` is falsy and there's no error (meaning tokens were received and session was set successfully).
+**File: `src/routes/login.tsx`** — Replaced hardcoded colors with theme tokens:
 
-## Fix
+- Page background: `bg-white` → `bg-background`
+- Card background: `bg-white` → `bg-card`
+- CTA button: `bg-[#FDAA3E] text-[#1a1a1a] hover:bg-[#fdb95e] shadow-[#FDAA3E]/20` → `bg-brand text-brand-foreground hover:bg-brand/90 shadow-brand/20`
 
-**File: `src/routes/login.tsx`** — In `handleGoogleSignIn`, after the error check, add navigation for the success case:
+## Suggested next steps
 
-```typescript
-const result = await lovable.auth.signInWithOAuth("google", {
-  redirect_uri: `${window.location.origin}/app`,
-});
-
-if (result.error) {
-  toast.error(...);
-} else if (!result.redirected) {
-  // Session was set successfully via token exchange — navigate now
-  navigate({ to: "/app" });
-}
-```
-
-When `result.redirected` is true, the browser is already navigating to the redirect URI, so we do nothing. When it's false and there's no error, tokens were exchanged inline and the session is ready — we just need to programmatically navigate.
-
-This is a one-line addition that closes the gap in the auth flow.
-
+1. Apply the same `brand` token to other hardcoded orange instances (hero CTAs in `src/routes/index.tsx`, `ProgressRing.tsx`, `HabitCard.tsx` checkmarks) so the entire app is themeable.
+2. Configure Google social auth in Lovable Cloud if you want the "Continue with Google" button to work for real users.
+3. Publish the app to make it live and test the OAuth flow end-to-end.
