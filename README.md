@@ -190,21 +190,8 @@ DailyMint is a mobile-first habit tracker application that enables users to buil
 
 - **Release**: App Store and Google Play releases with version management, beta testing program, release notes
 
-This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://daily-root-craft.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/f8a68b8d-bae0-4a88-9c3a-84e3a6dc5798).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Live app: https://continuum.meenai.in
 
 ```sh
 git clone <this-repository-url>
